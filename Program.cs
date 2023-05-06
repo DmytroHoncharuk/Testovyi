@@ -6,6 +6,9 @@ namespace StringWithWrongs
     {
         static void Main(string[] args)
         {
+            while (true)
+            {
+                /*
             Console.WriteLine("Введіть першу строку: ");
             string str1 = Console.ReadLine();
 
@@ -15,16 +18,19 @@ namespace StringWithWrongs
             Console.WriteLine($"Перша строка: {str1}");
             Console.WriteLine($"Друга строка: {str2}");
 
-            bool isEqual = CompareStrings(str1, str2, 3); // допустима кількість помилок - 3
+            bool isEqual = CompareStrings(str1, str2, 1); // допустима кількість помилок - 2
             if (isEqual)
             {
-                Console.WriteLine("Строки рівні.");
+                Console.WriteLine(isEqual);
             }
             else
             {
-                Console.WriteLine("Строки не рівні.");
+                Console.WriteLine(isEqual);
             }
             Console.ReadLine();
+                */
+            }
+          
         }
 
         static bool CompareStrings(string str1, string str2, int maxAllowedErrors)
@@ -75,9 +81,8 @@ namespace StringWithWrongs
                     distances[i, j] = minDistance;
                 }
             }
-
             int errorsCount = distances[arr1.Length, arr2.Length];
-            return (errorsCount <= maxAllowedErrors);
+            return errorsCount <= maxAllowedErrors;
         }
     }
 }
