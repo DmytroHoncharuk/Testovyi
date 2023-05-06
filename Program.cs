@@ -1,4 +1,5 @@
 ﻿using System;
+using testoveGit;
 
 namespace StringWithWrongs
 {
@@ -17,8 +18,8 @@ namespace StringWithWrongs
 
                 Console.WriteLine($"Перша строка: {str1}");
                 Console.WriteLine($"Друга строка: {str2}");
-
-                bool isEqual = CompareStrings(str1, str2, 1); // допустима кількість помилок - 2
+                TelegramCheckout.DeleteSymbol(ref str2);
+                bool isEqual = CompareStrings(str1, str2, 0); // допустима кількість помилок 0
                 if (isEqual)
                 {
                     Console.WriteLine(isEqual);
