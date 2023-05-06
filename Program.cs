@@ -8,29 +8,29 @@ namespace StringWithWrongs
         {
             while (true)
             {
-            
-            Console.WriteLine("Введіть першу строку: ");
-            string str1 = Console.ReadLine();
 
-            Console.WriteLine("Введіть другу строку: ");
-            string str2 = Console.ReadLine();
+                Console.WriteLine("Введіть першу строку: ");
+                string str1 = Console.ReadLine();
 
-            Console.WriteLine($"Перша строка: {str1}");
-            Console.WriteLine($"Друга строка: {str2}");
+                Console.WriteLine("Введіть другу строку: ");
+                string str2 = Console.ReadLine();
 
-            bool isEqual = CompareStrings(str1, str2, 1); // допустима кількість помилок - 2
-            if (isEqual)
-            {
-                Console.WriteLine(isEqual);
+                Console.WriteLine($"Перша строка: {str1}");
+                Console.WriteLine($"Друга строка: {str2}");
+
+                bool isEqual = CompareStrings(str1, str2, 1); // допустима кількість помилок - 2
+                if (isEqual)
+                {
+                    Console.WriteLine(isEqual);
+                }
+                else
+                {
+                    Console.WriteLine(isEqual);
+                }
+                Console.ReadLine();
+
             }
-            else
-            {
-                Console.WriteLine(isEqual);
-            }
-            Console.ReadLine();
-               
-            }
-          
+
         }
 
         static bool CompareStrings(string str1, string str2, int maxAllowedErrors)
