@@ -8,7 +8,7 @@ namespace StringWithWrongs
         {
             while (true)
             {
-                /*
+            
             Console.WriteLine("Введіть першу строку: ");
             string str1 = Console.ReadLine();
 
@@ -28,7 +28,7 @@ namespace StringWithWrongs
                 Console.WriteLine(isEqual);
             }
             Console.ReadLine();
-                */
+               
             }
           
         }
