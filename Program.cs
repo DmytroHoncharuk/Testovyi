@@ -6,7 +6,6 @@ namespace StringWithWrongs
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("It is good");
             Console.WriteLine("Введіть першу строку: ");
             string str1 = Console.ReadLine();
 
