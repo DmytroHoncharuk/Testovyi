@@ -24,7 +24,6 @@ namespace StringWithWrongs
             {
                 Console.WriteLine("Строки не рівні.");
             }
-
             Console.ReadLine();
         }
 
