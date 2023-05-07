@@ -9,7 +9,7 @@ namespace StringWithWrongs
             while (true)
             {
                 Console.WriteLine("ХУЙ ");
-
+                Console.WriteLine("ПЕЗда");
                 Console.WriteLine("Введіть першу строку: ");
                 string str1 = Console.ReadLine();
 
