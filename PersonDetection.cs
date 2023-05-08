@@ -1,39 +1,9 @@
 ﻿using System;
-using testoveGit;
 
-namespace StringWithWrongs
+namespace testoveGit
 {
-    class Program
+    public class PersonDetection
     {
-        static void Main(string[] args)
-        {
-            while (true)
-            {
-
-                Console.WriteLine("Введіть першу строку: ");
-                string str1 = Console.ReadLine();
-
-                Console.WriteLine("Введіть другу строку: ");
-                string str2 = Console.ReadLine();
-
-                Console.WriteLine($"Перша строка: {str1}");
-                Console.WriteLine($"Друга строка: {str2}");
-                PersonDetection.DeleteAt(ref str2);
-                bool isEqual = CompareStrings(str1, str2, 0); // допустима кількість помилок 0
-                if (isEqual)
-                {
-                    Console.WriteLine(isEqual);
-                }
-                else
-                {
-                    Console.WriteLine(isEqual);
-                }
-                Console.ReadLine();
-
-            }
-
-        }
-
         static bool CompareStrings(string str1, string str2, int maxAllowedErrors)
         {
             // Перетворення рядків на масиви символів
@@ -42,19 +12,16 @@ namespace StringWithWrongs
 
             // Перевірка на рівність без будь-якої помилки
             if (str1.Equals(str2, StringComparison.OrdinalIgnoreCase))
-            {
                 return true;
-            }
 
+            char[] separators = new char[] { ' ', ',', '.', '/', '-', '@' };
             // Перевірка варіанту, де ім'я та прізвище поміняні місцями
-            string[] name1 = str1.Split(' ');
-            string[] name2 = str2.Split(' ');
+            string[] name1 = str1.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            string[] name2 = str2.Split(separators, StringSplitOptions.RemoveEmptyEntries);
             if (name1.Length == 2 && name2.Length == 2)
             {
                 if (name1[1].Equals(name2[0], StringComparison.OrdinalIgnoreCase) && name1[0].Equals(name2[1], StringComparison.OrdinalIgnoreCase))
-                {
                     return true;
-                }
             }
 
             // Перевірка з врахуванням можливих помилок
@@ -85,5 +52,29 @@ namespace StringWithWrongs
             int errorsCount = distances[arr1.Length, arr2.Length];
             return errorsCount <= maxAllowedErrors;
         }
+        public static void DeleteAt(ref string str1)//видалення @ у стрічці введення
+        {
+            char[] arr = str1.ToCharArray();
+            bool presenseOfAt = false;
+            for (int i = 0; i < 1; i++) //arr.length
+            {
+                if (arr[0] == '@')
+                {
+                    arr[0] = '\0';
+                    presenseOfAt = true;
+                }
+            }
+            string result = "";
+            if (presenseOfAt)
+            {
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    if (arr[i] != '\0')
+                        result += arr[i];
+                }
+                str1 = result;
+            }
+        }
+
     }
 }
