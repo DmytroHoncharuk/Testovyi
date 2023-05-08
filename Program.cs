@@ -10,80 +10,29 @@ namespace StringWithWrongs
             while (true)
             {
 
-                Console.WriteLine("Введіть першу строку: ");
-                string str1 = Console.ReadLine();
-
-                Console.WriteLine("Введіть другу строку: ");
-                string str2 = Console.ReadLine();
-
-                Console.WriteLine($"Перша строка: {str1}");
-                Console.WriteLine($"Друга строка: {str2}");
-                PersonDetection.DeleteAt(ref str2);
-                bool isEqual = CompareStrings(str1, str2, 0); // допустима кількість помилок 0
+                Console.WriteLine("БД ім'я: ");
+                string str1 = Console.ReadLine(); //БД ім'я
+                Console.WriteLine("Значення з тесту: ");
+                string str2 = Console.ReadLine();// значення з тесту
+                Console.WriteLine("БД нік: ");
+                string str3 = Console.ReadLine(); // БД нік
+                Console.WriteLine("Тест нік: ");
+                string str4 = Console.ReadLine(); // значення з тесту
+                PersonDetection.DeleteAt(ref str4);
+                bool isEqual = PersonDetection.CompareStrings(str3, str4, 0); // порівняння нікнейму
                 if (isEqual)
                 {
-                    Console.WriteLine(isEqual);
+                    Console.WriteLine($"Порівняння нікнейму {isEqual}"); //якесь тіло умови
                 }
                 else
                 {
-                    Console.WriteLine(isEqual);
+                    Console.WriteLine("Порівняння за ім'ям");
+                    isEqual = PersonDetection.CompareStrings(str1, str2, 1);//перевірка ім'я
+                    Console.WriteLine($"Порівняння ім'я {isEqual}");
                 }
-                Console.ReadLine();
-
             }
 
         }
-
-        static bool CompareStrings(string str1, string str2, int maxAllowedErrors)
-        {
-            // Перетворення рядків на масиви символів
-            char[] arr1 = str1.ToLower().ToCharArray();
-            char[] arr2 = str2.ToLower().ToCharArray();
-
-            // Перевірка на рівність без будь-якої помилки
-            if (str1.Equals(str2, StringComparison.OrdinalIgnoreCase))
-            {
-                return true;
-            }
-
-            // Перевірка варіанту, де ім'я та прізвище поміняні місцями
-            string[] name1 = str1.Split(' ');
-            string[] name2 = str2.Split(' ');
-            if (name1.Length == 2 && name2.Length == 2)
-            {
-                if (name1[1].Equals(name2[0], StringComparison.OrdinalIgnoreCase) && name1[0].Equals(name2[1], StringComparison.OrdinalIgnoreCase))
-                {
-                    return true;
-                }
-            }
-
-            // Перевірка з врахуванням можливих помилок
-            int[,] distances = new int[arr1.Length + 1, arr2.Length + 1];
-            for (int i = 0; i <= arr1.Length; i++)
-            {
-                distances[i, 0] = i;
-            }
-            for (int j = 1; j <= arr2.Length; j++)
-            {
-                distances[0, j] = j;
-            }
-            for (int i = 1; i <= arr1.Length; i++)
-            {
-                for (int j = 1; j <= arr2.Length; j++)
-                {
-                    int cost = (arr1[i - 1] == arr2[j - 1]) ? 0 : 1;
-
-                    // Знаходження мінімальної відстані
-                    int deletion = distances[i - 1, j] + 1;
-                    int insertion = distances[i, j - 1] + 1;
-                    int substitution = distances[i - 1, j - 1] + cost;
-                    int minDistance = Math.Min(Math.Min(deletion, insertion), substitution);
-
-                    distances[i, j] = minDistance;
-                }
-            }
-            int errorsCount = distances[arr1.Length, arr2.Length];
-            return errorsCount <= maxAllowedErrors;
-        }
+ 
     }
 }
