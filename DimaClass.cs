@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace testoveGit
 {
-    internal class index
+    internal class DimaClass
     {
-        //тестова сторінка
+        //цей клас має бути доступний лише в гілці "DIMA"
     }
 }
